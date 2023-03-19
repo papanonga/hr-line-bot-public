@@ -1,0 +1,110 @@
+
+Old 
+
+### clockio_list table (temporary)
+    step 1 : clock-in / out in LINE application
+    step 2 : send picture timestamp
+sequelize model:generate --name ListClockIO --attributes "line_uid:string, event_type:string, event_time:date, image_name:string, location:string, last_step:number" --underscored true
+    - line_uid
+    - event_type (clock in, clock out)
+    - event_time (date time)
+    - image_name (image_name)
+    - location (lat,long )
+    - last_step (What user has ever do?)
+
+### clock in/out history table (permanent)
+sequelize model:generate --name ClockIOHistory --attributes "line_uid:string, event_type:string, event_time:date, image_name:string, location:string" --underscored true
+    - line_uid 
+    - event_type (clock in/ clock out)
+    - event_time (date time)
+    - image_name
+    - location (lat, long)
+
+
+### leave table history table
+    - request_from (line_uid)
+    - leave_catagory (annual leave, sick leave)
+    - leave_status (waiting, rejected, approved)
+    - 
+###
+
+
+
+New
+-------------
+
+### clockio_list table (temporary)
+    step 1 : clock-in / out in LINE application
+    step 2 : send picture timestamp
+
+sequelize model:generate --name ListClockIO --attributes "lineUid:string, eventType:string, eventTime:date, imageName:string, location:string, lastStep:integer"
+    - lineUid
+    - eventType (clock in, clock out)
+    - eventTime (date time)
+    - imageName (image_name)
+    - location (lat,long )
+    - lastStep (What user has ever do?)
+
+### clock in/out history table (permanent)
+sequelize model:generate --name ClockIOHistory --attributes "lineUid:string, eventType:string, eventTime:date, imageName:string, location:string" 
+    - lineUid 
+    - eventType (clock in/ clock out)
+    - eventTime (date time)
+    - imageName
+    - location (lat, long)
+
+
+### leave table history table
+    - requestFrom (line_uid)
+    - leaveCatagory (annual leave, sick leave)
+    - leaveStatus (waiting, rejected, approved)
+    - 
+###
+
+
+------ 2nd -------
+
+
+
+sequelize model:generate --name Employees --attributes "userId:string, lineUid:string, name:string, surname:string ,groupId:string, joinDate:date, contractType:string"
+Employees Table
+
+{
+    userId : string
+    lineUid : string
+    name: string
+    surname: string
+    groupId: string
+    joinDate: date
+    contractType: string (permanent, contract)
+}
+
+
+sequelize model:generate --name Activations --attributes "registerKey:string, userId:string, lineUid:string, isUsed:boolean" 
+
+// hasOne Employee and one Employee belongTo Activation code
+Activations Table
+{
+    registerKey : string
+    userId : string
+    lineUid : string
+    isUsed : boolean (true is used, false is not)
+}
+
+sequelize model:generate --name Groups --attributes "groupId:string, groupName:string, managerId:string"
+Groups Table
+{
+    groupId : string
+    groupName : string
+    managerId : string (Group manager)
+}
+
+
+
+sequelize model:generate --name Managers --attributes "managerId:string, userId:string" 
+Managers Table
+{
+    managerId : string
+    userId : string // managerId link to userId for more information
+
+}

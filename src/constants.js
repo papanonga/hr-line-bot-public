@@ -1,0 +1,5 @@
+module.exports = {
+    REQUEST_FROM_LINE_BUTTON : 'LINE_BUTTON',
+    SEND_LOCATION_WEB_APP : 'WEB_LOCATION'    
+}
+

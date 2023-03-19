@@ -1,0 +1,30 @@
+LINE Messaging api
+
+// When webhook was called
+
+### Text message (Request body)
+{
+  destination: 'U56ccff0f2725b18a8bf24d659ba36ec0',
+  events: [
+    {
+      type: 'message',
+      message: [Object],
+      webhookEventId: '01GQ49ERKYSAZSAK17YT7N4JCV',
+      deliveryContext: [Object],
+      timestamp: 1674107642089,
+      source: [Object],
+      replyToken: 'd0b0cf5cc9e246b29ca535c1657b160c',
+      mode: 'active'
+    }
+  ]
+}
+
+### message Object 
+{ 
+    type: 'text', 
+    id: '17496350339694', 
+    text: 'text message' 
+}
+
+
+
